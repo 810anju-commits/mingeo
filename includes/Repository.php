@@ -7,6 +7,9 @@ class Repository
 
     public function __construct()
     {
+        if (function_exists('mysqli_report')) {
+            mysqli_report(MYSQLI_REPORT_OFF);
+        }
         $config = require __DIR__ . '/../config/database.php';
         $this->connection = @new mysqli(
             $config['host'],
